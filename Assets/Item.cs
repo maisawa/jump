@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-
-    private void OnTriggerEnter(Collider other)
+   void OnGetAnimationFinished()
     {
+        Debug.Log("オブジェクトを破棄します");
+
+    }
+   void OnTriggerEnter(Collider other)
+    {
+        
         //Debug.Log(other.name + " が接触した");
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
+
     }
 }
