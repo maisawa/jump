@@ -4,20 +4,32 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-   void OnGetAnimationFinished()
+    Animator _anim;
+
+    void Start()
+    {
+        _anim = GetComponent<Animator>();
+    }
+
+    /// <summary>
+    /// 取得アニメーションの再生が終わったら呼び出す処理
+    /// オブジェクトを破棄 (destroy) する
+    /// </summary>
+    void OnGetAnimationFinished()
     {
         Debug.Log("オブジェクトを破棄します");
-
+        Destroy(gameObject);
     }
-   void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        _anim.SetBool("IsGet", true);
+        //_anim.Play("Get");
         //Debug.Log(other.name + " が接触した");
-        // Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-
     }
 }
